@@ -17,14 +17,14 @@ go run main.go example/blog_post.txt
 ### Generated Files
 
 #### Entities
-![Entities](https://raw.githubusercontent.com/entable/entable/master/screenshoots/entities.png)
+![Entities](https://raw.githubusercontent.com/febriliankr/entable/master/screenshoots/entities.png)
 
 #### Interfaces
-![Interfaces](https://raw.githubusercontent.com/entable/entable/master/screenshoots/interfaces.png)
+![Interfaces](https://raw.githubusercontent.com/febriliankr/entable/master/screenshoots/interfaces.png)
 
 #### Repo
-![Repo](https://raw.githubusercontent.com/entable/entable/master/screenshoots/repo.png)
+![Repo](https://raw.githubusercontent.com/febriliankr/entable/master/screenshoots/repo.png)
 
 #### Usecase
-![Usecase](https://raw.githubusercontent.com/entable/entable/master/screenshoots/usecase.png)
+![Usecase](https://raw.githubusercontent.com/febriliankr/entable/master/screenshoots/usecase.png)
 
