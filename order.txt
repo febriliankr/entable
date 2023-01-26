@@ -1,0 +1,26 @@
+1	order_id	int4	NO	NULL	"nextval('order_id_seq'::regclass)"		NULL
+2	xendit_external_id	varchar	YES	NULL	NULL		NULL
+4	qr_string	varchar	NO	NULL	"''::character varying"		NULL
+5	amount	varchar	YES	NULL	NULL		NULL
+6	created	timestamp	YES	NULL	now()		NULL
+7	updated	timestamp	YES	NULL	NULL		NULL
+8	qr_status	varchar	YES	NULL	"''::character varying"		NULL
+9	product_id	int8	YES	NULL	NULL		NULL
+10	order_slug	varchar	YES	NULL	"''::character varying"		NULL
+11	is_paid	bool	NO	NULL	false		NULL
+12	subscription_start	timestamp	YES	NULL	NULL		NULL
+13	subscription_end	timestamp	YES	NULL	NULL		NULL
+14	quantity	int8	YES	NULL	1		NULL
+15	va_status	varchar	NO	NULL	"''::character varying"		NULL
+16	account_number	varchar	NO	NULL	"''::character varying"		NULL
+17	bank_code	varchar	NO	NULL	"''::character varying"		NULL
+18	user_uuid	uuid	YES	NULL	NULL		NULL
+19	oid	uuid	NO	NULL	uuid_generate_v4()		NULL
+20	va_expired_at	timestamp	YES	NULL	NULL		NULL
+21	payment_method_id	uuid	YES	NULL	NULL		NULL
+22	service_id	uuid	YES	NULL	NULL		NULL
+23	description	varchar	YES	NULL	NULL		NULL
+24	down_payment_at	timestamp	YES	NULL	NULL		NULL
+25	paid_at	timestamp	YES	NULL	NULL		NULL
+26	deleted_at	timestamp	YES	NULL	NULL		NULL
+27	academy_id	uuid	YES	NULL	NULL		NULL

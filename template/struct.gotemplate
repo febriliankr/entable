@@ -1,0 +1,45 @@
+package entities
+
+type Get{{.TableNameCamel}}ListRequest struct {
+    {{range $val := .Columns}}
+    {{$val.CamelName}} {{$val.Type}} `json:"{{$val.SnakeName}}" db:"{{$val.SnakeName}}"`{{end}}
+}
+
+type Get{{.TableNameCamel}}ListResponse struct {
+    {{range $val := .Columns}}
+    {{$val.CamelName}} {{$val.Type}} `json:"{{$val.SnakeName}}" db:"{{$val.SnakeName}}"`{{end}}
+}
+
+type Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}}Request struct {
+    {{.PrimaryKey.CamelName}} {{.PrimaryKey.Type}} `json:"{{.PrimaryKey.SnakeName}}" db:"{{.PrimaryKey.SnakeName}}"`
+}
+
+type Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}}Response struct {
+    {{range $val := .Columns}}
+    {{$val.CamelName}} {{$val.Type}} `json:"{{$val.SnakeName}}" db:"{{$val.SnakeName}}"`{{end}}
+}
+
+type Create{{.TableNameCamel}}Request struct {
+    {{range $val := .Columns}}
+    {{$val.CamelName}} {{$val.Type}} `json:"{{$val.SnakeName}}" db:"{{$val.SnakeName}}"`{{end}}
+}
+
+type Create{{.TableNameCamel}}Response struct {
+    {{.PrimaryKey.CamelName}} {{.PrimaryKey.Type}} `json:"{{.PrimaryKey.SnakeName}}" db:"{{.PrimaryKey.SnakeName}}"`
+}
+
+type Update{{.TableNameCamel}}Request struct {
+    {{range $val := .Columns}}
+    {{$val.CamelName}} {{$val.Type}} `json:"{{$val.SnakeName}}" db:"{{$val.SnakeName}}"`{{end}}
+}
+
+type Update{{.TableNameCamel}}Response struct {
+}
+
+type Delete{{.TableNameCamel}}Request struct {
+    {{.PrimaryKey.CamelName}} {{.PrimaryKey.Type}} `json:"{{.PrimaryKey.SnakeName}}" db:"{{.PrimaryKey.SnakeName}}"`
+}
+
+type Delete{{.TableNameCamel}}Response struct {
+    
+}

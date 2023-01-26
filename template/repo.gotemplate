@@ -1,0 +1,43 @@
+package repo
+
+import (
+    "github.com/jmoiron/sqlx"
+)
+
+const (
+    queryGet{{.TableNameCamel}} = `SELECT {{range $val := .Columns}}{{$val.SnakeName}}, {{end}} FROM {{.TableNameSnake}}`
+    queryGet{{.TableNameCamel}}By{{.PrimaryKey.CamelName}} = `SELECT {{range $val := .Columns}}{{$val.SnakeName}}, {{end}} FROM {{.TableNameSnake}} WHERE {{.PrimaryKey.SnakeName}} = $1`
+    queryCreate{{.TableNameCamel}} = `INSERT INTO {{.TableNameSnake}} ({{range $val := .Columns}}{{$val.SnakeName}}, {{end}}) VALUES ({{range $val := .Columns}} ${{$val.Index}}, {{end}}) RETURNING {{.PrimaryKey.SnakeName}}`
+    queryUpdate{{.TableNameCamel}} = `UPDATE {{.TableNameSnake}} SET {{range $val := .Columns}} {{$val.SnakeName}} = {{$val.Index}}, {{end}} WHERE {{.PrimaryKey.SnakeName}} = $1`
+    queryDelete{{.TableNameCamel}} = `UPDATE {{.TableNameSnake}} SET deleted_at = NOW() WHERE {{.PrimaryKey.SnakeName}} = $1`
+)
+
+type {{.TableNameCamel}}DB struct {
+    Db *sqlx.DB
+}
+
+func (r *{{.TableNameCamel}}DB) Get{{.TableNameCamel}}List (req entities.Get{{.TableNameCamel}}ListRequest) (res []entities.Get{{.TableNameCamel}}ListResponse, err error) {
+    err = r.Db.Select(&res, queryGet{{.TableNameCamel}}, req.{{.PrimaryKey.CamelName}})
+    return res, err
+}
+
+
+func (r *{{.TableNameCamel}}DB) Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}} (req entities.Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}}Request) (res []entities.Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}}Response, err error) {
+    err = r.Db.Select(&res, queryGet{{.TableNameCamel}}, req.{{.PrimaryKey.CamelName}})
+    return res, err
+}
+
+func (r *{{.TableNameCamel}}DB) Create{{.TableNameCamel}} (req entities.Create{{.TableNameCamel}}Request) (res []entities.Create{{.TableNameCamel}}Response, err error) {
+    err = r.Db.Select(&res, queryCreate{{.TableNameCamel}}, req.{{.PrimaryKey.CamelName}})
+    return res, err
+}
+
+func (r *{{.TableNameCamel}}DB) Update{{.TableNameCamel}} (req entities.Update{{.TableNameCamel}}Request) (res []entities.Update{{.TableNameCamel}}Response, err error) {
+    err = r.Db.Select(&res, queryUpdate{{.TableNameCamel}}, {{range $val := .Columns}} req.{{$val.CamelName}}, {{end}} req.{{.PrimaryKey.CamelName}})
+    return res, err
+}
+
+func (r *{{.TableNameCamel}}DB) Delete{{.TableNameCamel}} (req entities.Delete{{.TableNameCamel}}Request) (res []entities.Delete{{.TableNameCamel}}Response, err error) {
+    err = r.Db.Select(&res, queryDelete{{.TableNameCamel}}, req.{{.PrimaryKey.CamelName}})
+    return res, err
+}
