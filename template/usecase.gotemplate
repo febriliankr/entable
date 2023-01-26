@@ -5,25 +5,25 @@ import (
 )
 
 type {{.TableNameCamel}}UC struct {
-    repo internal.{{.TableNameCamel}}DB
+    repo interfaces.{{.TableNameCamel}}DB
 }
 
-func (r *{{.TableNameCamel}}UC) Get{{.TableNameCamel}}List (req entities.Get{{.TableNameCamel}}ListRequest) (res []entities.Get{{.TableNameCamel}}ListResponse, err error) {
-    return Get{{.TableNameCamel}}List
+func (uc *{{.TableNameCamel}}UC) Get{{.TableNameCamel}}List (req entities.Get{{.TableNameCamel}}ListRequest) (res []entities.Get{{.TableNameCamel}}ListResponse, err error) {
+    return uc.repo.Get{{.TableNameCamel}}List(req)
 }
 
-func (r *{{.TableNameCamel}}UC) Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}} (req entities.Get{{.TableNameCamel}}Request) (res []entities.Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}}Response, err error) {
-    return Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}}
+func (uc *{{.TableNameCamel}}UC) Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}} (req entities.Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}}Request) (res []entities.Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}}Response, err error) {
+    return uc.repo.Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}}(req)
 }
 
-func (r *{{.TableNameCamel}}UC) Create{{.TableNameCamel}} (req entities.Create{{.TableNameCamel}}Request) (res []entities.Create{{.TableNameCamel}}Response, err error) {
-    return Create{{.TableNameCamel}}
+func (uc *{{.TableNameCamel}}UC) Create{{.TableNameCamel}} (req entities.Create{{.TableNameCamel}}Request) (res []entities.Create{{.TableNameCamel}}Response, err error) {
+    return uc.repo.Create{{.TableNameCamel}}(req)
 }
 
-func (r *{{.TableNameCamel}}UC) Update{{.TableNameCamel}} (req entities.Update{{.TableNameCamel}}Request) (res []entities.Update{{.TableNameCamel}}Response, err error) {
-    return Update{{.TableNameCamel}}
+func (uc *{{.TableNameCamel}}UC) Update{{.TableNameCamel}} (req entities.Update{{.TableNameCamel}}Request) (res []entities.Update{{.TableNameCamel}}Response, err error) {
+    return uc.repo.Update{{.TableNameCamel}}(req)
 }
 
-func (r *{{.TableNameCamel}}UC) Delete{{.TableNameCamel}} (req entities.Delete{{.TableNameCamel}}Request) (res []entities.Delete{{.TableNameCamel}}Response, err error) {
-    return Delete{{.TableNameCamel}}
+func (uc *{{.TableNameCamel}}UC) Delete{{.TableNameCamel}} (req entities.Delete{{.TableNameCamel}}Request) (res []entities.Delete{{.TableNameCamel}}Response, err error) {
+    return uc.repo.Delete{{.TableNameCamel}}(req)
 }

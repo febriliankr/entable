@@ -1,0 +1,9 @@
+1	blog_post_id	uuid	NO	NULL	uuid_generate_v4()		NULL
+2	title	varchar	YES	NULL	NULL		NULL
+3	content	varchar	YES	NULL	NULL		NULL
+4	created_at	timestamp	YES	NULL	now()		NULL
+5	featured_image_url	varchar	YES	NULL	NULL		NULL
+6	slug	varchar	YES	NULL	NULL		NULL
+7	is_published	bool	YES	NULL	false		NULL
+8	excerpt	varchar	YES	NULL	NULL		NULL
+9	updated_at	timestamp	YES	NULL	NULL		NULL

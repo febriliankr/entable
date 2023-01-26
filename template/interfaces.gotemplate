@@ -2,7 +2,7 @@ package interfaces
 
 type {{.TableNameCamel}}DB interface {
     Get{{.TableNameCamel}}List (req entities.Get{{.TableNameCamel}}ListRequest) (res []entities.Get{{.TableNameCamel}}ListResponse, err error) 
-    Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}} (req entities.Get{{.TableNameCamel}}Request) (res []entities.Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}}Response, err error) 
+    Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}} (req entities.Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}}Request) (res []entities.Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}}Response, err error) 
     Create{{.TableNameCamel}} (req entities.Create{{.TableNameCamel}}Request) (res []entities.Create{{.TableNameCamel}}Response, err error) 
     Update{{.TableNameCamel}} (req entities.Update{{.TableNameCamel}}Request) (res []entities.Update{{.TableNameCamel}}Response, err error) 
     Delete{{.TableNameCamel}} (req entities.Delete{{.TableNameCamel}}Request) (res []entities.Delete{{.TableNameCamel}}Response, err error)     
@@ -10,7 +10,7 @@ type {{.TableNameCamel}}DB interface {
 
 type {{.TableNameCamel}}UC interface {
     Get{{.TableNameCamel}}List (req entities.Get{{.TableNameCamel}}ListRequest) (res []entities.Get{{.TableNameCamel}}ListResponse, err error) 
-    Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}} (req entities.Get{{.TableNameCamel}}Request) (res []entities.Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}}Response, err error) 
+    Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}} (req entities.Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}}Request) (res []entities.Get{{.TableNameCamel}}By{{.PrimaryKey.CamelName}}Response, err error) 
     Create{{.TableNameCamel}} (req entities.Create{{.TableNameCamel}}Request) (res []entities.Create{{.TableNameCamel}}Response, err error) 
     Update{{.TableNameCamel}} (req entities.Update{{.TableNameCamel}}Request) (res []entities.Update{{.TableNameCamel}}Response, err error) 
     Delete{{.TableNameCamel}} (req entities.Delete{{.TableNameCamel}}Request) (res []entities.Delete{{.TableNameCamel}}Response, err error)     

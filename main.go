@@ -23,7 +23,7 @@ func main() {
 	// get flag from running command
 
 	if len(os.Args) < 1 {
-		fmt.Println("please provide table name")
+		fmt.Println("please provide table name, check README.md for more info")
 		return
 	}
 
@@ -47,7 +47,9 @@ func createRequiredFolders() {
 
 func Generate(filepath string) error {
 
-	tableName := strings.Split(filepath, ".")[0]
+	rootFilepath := strings.Split(filepath, "/")[len(strings.Split(filepath, "/"))-1]
+
+	tableName := strings.Split(rootFilepath, ".")[0]
 
 	file, err := os.ReadFile(filepath)
 
@@ -99,7 +101,10 @@ func generateAndWriteToFile(entity EntityRequest) error {
 	if err != nil {
 		return err
 	}
-	err = os.WriteFile("generated/entities/"+entity.TableNameCamel+".go", []byte(entityCode), 0644)
+
+	fileName := strcase.LowerCamelCase(entity.TableNameCamel)
+
+	err = os.WriteFile("generated/entities/"+fileName+".go", []byte(entityCode), 0644)
 	if err != nil {
 		return err
 	}
@@ -108,7 +113,7 @@ func generateAndWriteToFile(entity EntityRequest) error {
 	if err != nil {
 		return err
 	}
-	err = os.WriteFile("generated/repo/"+entity.TableNameSnake+".go", []byte(repoCode), 0644)
+	err = os.WriteFile("generated/repo/"+fileName+".go", []byte(repoCode), 0644)
 	if err != nil {
 		return err
 	}
@@ -117,7 +122,7 @@ func generateAndWriteToFile(entity EntityRequest) error {
 	if err != nil {
 		return err
 	}
-	err = os.WriteFile("generated/interfaces/"+entity.TableNameSnake+".go", []byte(interfaceCode), 0644)
+	err = os.WriteFile("generated/interfaces/"+fileName+".go", []byte(interfaceCode), 0644)
 	if err != nil {
 		return err
 	}
@@ -127,7 +132,7 @@ func generateAndWriteToFile(entity EntityRequest) error {
 		return err
 	}
 
-	err = os.WriteFile("generated/usecase/"+entity.TableNameSnake+".go", []byte(usecaseCode), 0644)
+	err = os.WriteFile("generated/usecase/"+fileName+".go", []byte(usecaseCode), 0644)
 	if err != nil {
 		return err
 	}
